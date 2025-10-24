@@ -27,7 +27,7 @@ public class MedicoController {
             List<Medico> medico = medicoDao.listarMedicos();
             return Response.status(200).entity(medico).build();
         } catch (Exception ex) {
-            return Response.status(422).build();
+            return Response.status(500).build();
         }
     }
 
@@ -39,7 +39,7 @@ public class MedicoController {
             Medico medico = medicoDao.buscar(idMedico);
             return Response.status(200).entity(medico).build();
         } catch (Exception ex) {
-            return Response.status(422).build();
+            return Response.status(500).build();
         }
     }
 
@@ -51,7 +51,7 @@ public class MedicoController {
             medicoDao.cadastrarMedico(medico);
             return Response.status(201).build();
         } catch (Exception ex) {
-            return Response.status(422).build();
+            return Response.status(500).build();
         }
     }
 
@@ -63,7 +63,7 @@ public class MedicoController {
             medicoDao.atualizarMedico(medico);
             return Response.status(200).build();
         } catch (Exception ex) {
-            return Response.status(422).build();
+            return Response.status(500).build();
         }
     }
 
@@ -75,7 +75,7 @@ public class MedicoController {
             medicoDao.removerMedico(medico.getIdMedico());
             return Response.status(200).build();
         } catch (Exception ex) {
-            return Response.status(422).build();
+            return Response.status(500).build();
         }
     }
 }
