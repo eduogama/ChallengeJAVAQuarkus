@@ -30,7 +30,7 @@ public class PacienteController {
             List<Paciente> paciente = pacienteDao.listar();
             return Response.status(200).entity(paciente).build();
         } catch (Exception ex) {
-            return Response.status(422).build();
+            return Response.status(500).build();
         }
     }
 }
