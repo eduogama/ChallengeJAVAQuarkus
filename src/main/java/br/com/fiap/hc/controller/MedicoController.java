@@ -43,7 +43,7 @@ public class MedicoController {
         }
     }
 
-    @PUT
+    @POST
     @Path("/insert")
     public Response insert(Medico medico) {
 
