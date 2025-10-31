@@ -2,6 +2,7 @@ package br.com.fiap.hc.controller;
 
 import br.com.fiap.hc.dao.MedicoDao;
 import br.com.fiap.hc.model.Medico;
+import br.com.fiap.hc.model.request.MedicoRequest;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -27,7 +28,7 @@ public class MedicoController {
             List<Medico> medico = medicoDao.listarMedicos();
             return Response.status(200).entity(medico).build();
         } catch (Exception ex) {
-            return Response.status(500).build();
+            return Response.status(404).build();
         }
     }
 
@@ -39,7 +40,7 @@ public class MedicoController {
             Medico medico = medicoDao.buscar(idMedico);
             return Response.status(200).entity(medico).build();
         } catch (Exception ex) {
-            return Response.status(500).build();
+            return Response.status(404).build();
         }
     }
 
@@ -51,7 +52,7 @@ public class MedicoController {
             medicoDao.cadastrarMedico(medico);
             return Response.status(201).build();
         } catch (Exception ex) {
-            return Response.status(500).build();
+            return Response.status(404).build();
         }
     }
 
@@ -63,19 +64,19 @@ public class MedicoController {
             medicoDao.atualizarMedico(medico);
             return Response.status(200).build();
         } catch (Exception ex) {
-            return Response.status(500).build();
+            return Response.status(404).build();
         }
     }
 
     @DELETE
     @Path("/delete")
-    public Response delete(Medico medico) {
+    public Response delete(MedicoRequest medico) {
 
         try {
             medicoDao.removerMedico(medico.getIdMedico());
             return Response.status(200).build();
         } catch (Exception ex) {
-            return Response.status(500).build();
+            return Response.status(404).build();
         }
     }
 }
